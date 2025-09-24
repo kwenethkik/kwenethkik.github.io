@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kweneth KIKHOUNGA - Ingénieur Électronique Hyperfréquences</title>
+    <meta name="description" content="Ingénieur Électronique Hyperfréquences spécialisé en fiabilité des composants RF et caractérisation des systèmes hyperfréquences">
+    <meta name="keywords" content="ingénieur hyperfréquences, fiabilité composants RF, semi-conducteurs, 5G, télécommunications">
+    
+    <style>
+        :root {
+            --primary-color: #1e3d59;
+            --secondary-color: #2c5aa0;
+            --accent-color: #ff9800;
+            --light-blue: #e3f2fd;
+            --text-dark: #333;
+            --text-light: #666;
+            --background: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--background);
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="white" stop-opacity=".1"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+        }
+
+        .nav {
+            background: rgba(30, 61, 89, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(30, 61, 89, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .hero .specialization {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+            margin-top: 60px;
+        }
+
+        .section:first-of-type {
+            margin-top: 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Profile Section */
+        .profile {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .profile-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .experience-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .experience-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .experience-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .experience-content {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            margin: 0 2rem;
+        }
+
+        .experience-item:nth-child(odd) .experience-content {
+            margin-right: calc(50% + 2rem);
+        }
+
+        .experience-item:nth-child(even) .experience-content {
+            margin-left: calc(50% + 2rem);
+        }
+
+        .experience-date {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .experience-item:nth-child(odd) .experience-date {
+            left: calc(50% + 1rem);
+        }
+
+        .experience-item:nth-child(even) .experience-date {
+            right: calc(50% + 1rem);
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .experience-description {
+            list-style: none;
+        }
+
+        .experience-description li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .project-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            list-style: none;
+        }
+
+        .project-description li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .contact-info {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .experience-timeline::before {
+                left: 2rem;
+            }
+
+            .experience-item {
+                flex-direction: column !important;
+            }
+
+            .experience-item:nth-child(odd) .experience-content,
+            .experience-item:nth-child(even) .experience-content {
+                margin: 0 0 0 4rem;
+            }
+
+            .experience-item:nth-child(odd) .experience-date,
+            .experience-item:nth-child(even) .experience-date {
+                left: 0;
+                right: auto;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Print styles */
+        @media print {
+            .nav, .footer {
+                display: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                margin-top: 0;
+            }
+            
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">KK</a>
+            <ul class="nav-menu">
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#formation">Formation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+<!-- Supprime la section photo existante -->
+
+<!-- ...existing code... -->
+<header class="header">
+    <div class="hero" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex:1;">
+            <h1>Kweneth KIKHOUNGA</h1>
+            <div class="subtitle">INGÉNIEUR ÉLECTRONIQUE HYPERFRÉQUENCES</div>
+            <div class="specialization">Spécialiste Fiabilité des Composants & Systèmes RF</div>
+            <div class="contact-info">
+                <div class="contact-item">📍 Toulouse, France</div>
+                <div class="contact-item">📞 07.53.80.74.84</div>
+                <div class="contact-item">✉️ kwenethl@gmail.com</div>
+                <div class="contact-item">🔗 LinkedIn: Kweneth Kikhounga</div>
+            </div>
+        </div>
+        <img src="photo.jpeg" alt="Photo de Kweneth Kikhounga" style="width:260px; border-radius:50%; box-shadow:0 5px 20px rgba(0,0,0,0.1); margin-left:2rem;">
+    </div>
+</header>
+<!-- ...existing code... -->
+
+    <!-- Profile Section -->
+    <section id="profil" class="section">
+        <div class="container">
+            <h2>PROFIL PROFESSIONNEL</h2>
+            <div class="profile animate-on-scroll">
+                <p class="profile-text">
+                    <strong>Ingénieur Électronique Hyperfréquences</strong> avec double diplôme (Master Photonique, Hyperfréquences et Systèmes de communication  + Management des Systèmes d'Information), spécialisé en <strong>systèmes RF</strong> et <strong>caractérisation des systèmes hyperfréquences</strong>. 
+                </p>
+                <br>
+                <p class="profile-text">
+                    Expérience pratique en conception d'antennes 5G, analyse de performances et qualification de systèmes de télécommunications. Forte capacité de <strong>communication technique</strong> et de <strong>travail en équipe internationale</strong>, recherche un poste en R&D pour contribuer à l'innovation technologique dans les semi-conducteurs hyperfréquences.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="competences" class="section">
+        <div class="container">
+            <h2>COMPÉTENCES TECHNIQUES</h2>
+            <div class="skills-grid">
+                <div class="skill-card animate-on-scroll">
+                    <h3>🔬 Fiabilité & Qualification</h3>
+                    <ul class="skill-list">
+                        <li>Caractérisation électrique RF</li>
+                        <li>Analyse de performances</li>
+                        <li>Tests de qualification</li>
+                        <li>Mécanismes de défaillance</li>
+                        <li>Plans d'évaluation fiabilité</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card animate-on-scroll">
+                    <h3>📡 Technologies RF/MW</h3>
+                    <ul class="skill-list">
+                        <li>Circuits hyperfréquences</li>
+                        <li>Composants semi-conducteurs</li>
+                        <li>Technologies GaAs, GaN, SiGe</li>
+                        <li>Systèmes 5G</li>
+                        <li>Antennes paraboliques</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card animate-on-scroll">
+                    <h3>💻 Logiciels Professionnels</h3>
+                    <ul class="skill-list">
+                        <li>ADS (Keysight) - Expert</li>
+                        <li>CST Studio Suite</li>
+                        <li>HFSS (Ansys)</li>
+                        <li>ATOLL, Séria</li>
+                        <li>MATLAB, LabVIEW</li>
+                        <li>OTDR</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card animate-on-scroll">
+                    <h3>🔧 Instrumentation</h3>
+                    <ul class="skill-list">
+                        <li>Analyseurs spectre RF/optique</li>
+                        <li>Mesures paramètres S</li>
+                        <li>Caractérisation antennes</li>
+                        <li>Équipements de test RF</li>
+                        <li>Chambre anéchoïque</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2>EXPÉRIENCE PROFESSIONNELLE</h2>
+            <div class="experience-timeline">
+                <div class="experience-item animate-on-scroll">
+                    <div class="experience-content">
+                        <div class="experience-title">Ingénieur R&D - Fiabilité des Composants Hyperfréquences</div>
+                        <div class="experience-company">Orange France, Montpellier (Alternance)</div>
+                        <ul class="experience-description">
+                            <li><strong>Conception et qualification</strong> de liaisons hertziennes 5G avec analyse approfondie des <strong>mécanismes de défaillance</strong></li>
+                            <li><strong>Caractérisation électrique</strong> et validation de performances des équipements RF (ODU/IDU)</li>
+                            <li>Développement de <strong>plans d'évaluation de fiabilité</strong> pour technologies de remplacement</li>
+                            <li><strong>Communication technique</strong> auprès d'équipes pluridisciplinaires françaises et européennes</li>
+                        </ul>
+                    </div>
+                    <div class="experience-date">2023 - 2025</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projets" class="section">
+        <div class="container">
+            <h2>PROJETS DE RECHERCHE APPLIQUÉE</h2>
+            <div class="projects-grid">
+                <div class="project-card animate-on-scroll">
+                    <div class="project-content">
+                        <div class="project-title">Caractérisation et Fiabilité d'Antenne Cassegrain Bi-bande 5G</div>
+                        <div class="project-meta">Orange France & IES Montpellier • Sep 2024 - Fév 2025 • Projet Master 2</div>
+                        <ul class="project-description">
+                            <li><strong>Conception et modélisation</strong> d'antenne parabolique avec CST Studio Suite</li>
+                            <li><strong>Caractérisation complète</strong> des paramètres de performance (S11, S21, gain)</li>
+                            <li>Analyse des modes de défaillance potentiels</li>
+                            <li>Validation expérimentale et <strong>qualification de fiabilité</strong> en chambre anéchoïque</li>
+                        </ul>
+                    </div>
+                </div>
+              
+                <div class="project-card animate-on-scroll">
+                    <div class="project-content">
+                        <div class="project-title">Modélisation des phénomènes de propagation par approche Ray Tracing</div>
+                        <div class="project-meta">Orange France • Fév 2025 - Août 2025 • Projet Master 2</div>
+                        <ul class="project-description">
+                            <li><strong>Estimation des pertes de propagation </strong> et optimisation des liens radio</li>
+                            <li>Implementation des antennes  <strong>et les liens radio</li>
+          
+                            <li>Propositions d'amélioration et simulation avec MATLAB</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="project-card animate-on-scroll">
+                    <div class="project-content">
+                        <div class="project-title">Étude de Fiabilité des Liaisons Hertziennes en Zones Critiques</div>
+                        <div class="project-meta">Orange France • 2023 - 2024 • Projet Master 1</div>
+                        <ul class="project-description">
+                            <li><strong>Analyse de bilan de liaison</strong> et évaluation des risques de défaillance</li>
+                            <li>Sélection et <strong>qualification d'équipements</strong> (antennes, ODU, IDU)</li>
+                            <li>Cartographie des zones de vulnérabilité</li>
+                            <li>Propositions d'amélioration et simulation avec ATOLL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section id="formation" class="section">
+        <div class="container">
+            <h2>FORMATION</h2>
+            <div class="experience-timeline">
+                <div class="experience-item animate-on-scroll">
+                    <div class="experience-content">
+                        <div class="experience-title">Master Photonique, Hyperfréquences et Systèmes de Communications</div>
+                        <div class="experience-company">Université de Montpellier</div>
+                        <ul class="experience-description">
+                            <li><strong>Spécialisation fiabilité</strong> : physique des composants, mécanismes de défaillance</li>
+                            <li>Maîtrise des technologies <strong>GaAs, GaN, SiGe</strong> et de leur caractérisation</li>
+                            <li>Projets pratiques sur équipements professionnels (analyseurs spectre, OTDR, chambres anéchoïques)</li>
+                            <li>Propagation guidée, émetteurs/récepteurs RF et photoniques</li>
+                        </ul>
+                    </div>
+                    <div class="experience-date">2023 - 2025</div>
+                </div>
+                
+                <div class="experience-item animate-on-scroll">
+                    <div class="experience-content">
+                        <div class="experience-title">Master Management des Technologies et Sciences</div>
+                        <div class="experience-company">IAE Montpellier (Double diplôme)</div>
+                        <ul class="experience-description">
+                            <li>Gestion de projets technologiques</li>
+                            <li>Management d'équipes R&D</li>
+                            <li>Innovation et transfert de technologie</li>
+                            <li>Stratégie d'entreprise technologique</li>
+                        </ul>
+                    </div>
+                    <div class="experience-date">2023 - 2025</div>
+                </div>
+                
+                <div class="experience-item animate-on-scroll">
+                    <div class="experience-content">
+                        <div class="experience-title">Licence Électronique, Énergie Électrique, Automatique (EEA)</div>
+                        <div class="experience-company">Université de Montpellier</div>
+                        <ul class="experience-description">
+                            <li>Fondamentaux en électronique et systèmes</li>
+                            <li>Programmation microcontrôleurs (Python, C++, VHDL)</li>
+                            <li>Traitement du signal et automatique</li>
+                            <li>Projets robotique et systèmes embarqués</li>
+                        </ul>
+                    </div>
+                    <div class="experience-date">2022 - 2023</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Additional Skills -->
+    <section class="section">
+        <div class="container">
+            <h2>LANGUES & QUALITÉS</h2>
+            <div class="skills-grid">
+                <div class="skill-card animate-on-scroll">
+                    <h3>🌍 Langues</h3>
+                    <ul class="skill-list">
+                        <li><strong>Français</strong> - Langue maternelle</li>
+                        <li><strong>Anglais technique</strong> - Niveau B2+</li>
+                        <li>Indispensable pour environnement international</li>
+                        <li>Communication technique fluide</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card animate-on-scroll">
+                    <h3>💡 Qualités Professionnelles</h3>
+                    <ul class="skill-list">
+                        <li>Communication & présentation</li>
+                        <li>Proactivité & initiatives</li>
+                        <li>Esprit de synthèse</li>
+                        <li>Autonomie & rigueur</li>
+                        <li>Travail collaboratif</li>
+                        <li>Force de proposition</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card animate-on-scroll">
+                    <h3>🎯 Secteurs d'Application</h3>
+                    <ul class="skill-list">
+                        <li>Défense & Sécurité</li>
+                        <li>Aéronautique & Spatial</li>
+                        <li>Télécommunications 5G</li>
+                        <li>Semi-conducteurs RF</li>
+                        <li>Instrumentation médicale</li>
+                        <li>Industrie automobile</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card animate-on-scroll">
+                    <h3>🔗 Centres d'Intérêt</h3>
+                    <ul class="skill-list">
+                        <li>Veille technologique RF</li>
+                        <li>Lecture revues scientifiques</li>
+                        <li>Musique (Piano)</li>
+                        <li>Sport (Basketball)</li>
+                        <li>Innovation technologique</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References -->
+    <section class="section">
+        <div class="container">
+            <h2>RÉFÉRENCES PROFESSIONNELLES</h2>
+            <div class="projects-grid">
+                <div class="project-card animate-on-scroll">
+                    <div class="project-content">
+                        <div class="project-title">Mme Sophie GABOYARD NIAY</div>
+                        <div class="project-meta">Manager Équipe CED Zone SUD</div>
+                        <ul class="project-description">
+                            <li><strong>Orange Montpellier</strong></li>
+                            <li>📧 sophie.gaboyardniay@orange.com</li>
+                            <li>Supervision directe des projets 5G</li>
+                            <li>Évaluation des compétences techniques</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-card animate-on-scroll">
+                    <div class="project-content">
+                        <div class="project-title">Mme Aline LENOIR</div>
+                        <div class="project-meta">Ingénieuriste Déploiement Réseau (Tutrice)</div>
+                        <ul class="project-description">
+                            <li><strong>Orange France</strong></li>
+                            <li>📧 aline.lenoir@orange.com</li>
+                            <li>Encadrement technique quotidien</li>
+                            <li>Formation pratique sur le terrain</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>CONTACTEZ-MOI</h2>
+            <div class="profile animate-on-scroll">
+                <div style="text-align: center; font-size: 1.1rem;">
+                    <p><strong>📧 Email :</strong> kwenethl@gmail.com</p>
+                    <p><strong>📞 Téléphone :</strong> 07.53.80.74.84</p>
+                    <p><strong>📍 Localisation :</strong> Montpellier, France</p>
+                    <p><strong>🔗 LinkedIn :</strong> Kweneth Kikhounga</p>
+                    <br>
+                    <p><em>Disponible pour un CDI en R&D Électronique Hyperfréquences</em></p>
+                    <p><em>Mobilité géographique possible en France et à l'international</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Kweneth KIKHOUNGA</h3>
+            <p>Ingénieur Électronique Hyperfréquences</p>
+            <p>Spécialiste Fiabilité des Composants & Systèmes RF</p>
+            
+            <div class="social-links">
+                <a href="mailto:kwenethl@gmail.com" title="Email">✉️</a>
+                <a href="tel:+33753807484" title="Téléphone">📞</a>
+                <a href="#" title="LinkedIn">🔗</a>
+                <a href="#" title="Télécharger CV PDF">📄</a>
+            </div>
+            
+            <p>&copy; 2025 Kweneth KIKHOUNGA. Tous droits réservés.</p>
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">
+                Site web créé pour candidature Thales/UMS - Ingénieur Électronique Hyperfréquences
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            typeWriter(heroTitle, originalText, 80);
+        });
+
+        // Print functionality
+        function printCV() {
+            window.print();
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
